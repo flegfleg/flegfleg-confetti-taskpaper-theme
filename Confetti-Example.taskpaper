@@ -1,0 +1,14 @@
+CONFETTI TaskPaper Theme:
+	A minimal theme for Taskpaper. 
+	https://github.com/flegfleg/flegfleg-confetti-taskpaper-theme
+Theme Details:
+	Includes styles for the following elements:
+		Notes. 
+		- This task has tags @myfirsttag @mysecondtag
+		- This task is is due today @today
+		- This task is canceled @canceled
+		- This task is done  @done(2017-01-08)
+		- This task is up next @next
+	This is a folded project:
+		- Task 1
+		

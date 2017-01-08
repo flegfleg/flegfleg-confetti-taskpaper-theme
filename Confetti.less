@@ -1,0 +1,176 @@
+// CONFETTI TaskPaper Theme
+// by Florian Egermann / fleg.de
+// Repo: https://github.com/flegfleg/flegfleg-confetti-taskpaper-theme
+// 
+// based on: Helvetican by wakatara (https://github.com/wakatara/HelvetiCan-Taskpaper-theme)
+
+// UI Scale
+@base-font-size: 16;
+@user-font-size: $USER_FONT_SIZE;
+@ui-scale: @user-font-size / @base-font-size;
+
+// UI Colors
+@blue: rgb(0,151,238);
+@light-grey: rgb(245,247,247);
+@red: rgb(255,0,28);
+@orange: rgb(255,114,14);
+@green: rgb(0,199,39);
+@black: rgb(0,0,0);
+@grey: mix(@text-color, @background-color, 35%);
+@selection-color: mix(@blue, @background-color, 20%); // rgb(148, 192, 255);
+@invisibles-color: mix(@blue, @background-color, 100%); // rgb(67, 119, 211);
+
+// Base text
+@text-color: rgb(20%, 20%, 20%);
+@background-color: @light-grey;
+@font-family: "-apple-system";
+@line-height-multiple: 1.1;
+
+editor {
+  color: @text-color;
+  ui-scale: @ui-scale;
+  font-size: @user-font-size;
+  font-family: @font-family;
+  background-color: @background-color;
+  line-height-multiple: @line-height-multiple;
+  item-indent: 20 * @ui-scale;
+  caret-width: floor(2 * @ui-scale);
+  caret-color: @blue;
+  drop-indicator-color: @black;
+  invisibles-color: @invisibles-color;
+  folded-items-label: "¶—¶";
+  filtered-items-label: "¶—¶";
+  item-handle-size: floor(7 * @ui-scale);
+  selection-background-color: @selection-color;
+  guide-line-color:  @background-color;
+  guide-line-width: floor(1 * @ui-scale);
+  message-color: mix(@text-color, @background-color, 50%);
+}
+
+item {
+  handle-color: @background-color;
+  handle-border-width: floor(1 * @ui-scale);
+}
+
+item[filtered] {
+  handle-color: @background-color;
+  handle-border-color: none;
+}
+
+item[empty] {
+  handle-color: none;
+  handle-border-color: none;
+}
+
+item[data-type="note"] {
+  color: mix(@black, @background-color, 50%);
+  font-style: normal;
+  handle-color: @background-color;
+  handle-border-color: @background-color;
+}
+
+item[data-type="task"] {
+  font-style: normal;
+  handle-border-color: @background-color;
+}
+
+item[data-type="project"] {
+  line-height-multiple: 2;
+  font-size: @user-font-size;
+  handle-border-color: @black;
+}
+
+item[depth="1"].item[data-type="project"] {
+  font-size: @user-font-size;
+}
+
+item[depth="2"].item[data-type="project"] {
+  font-size: @user-font-size;
+}
+
+item[data-done] {
+  > run[content] {
+  text-strikethrough: NSUnderlineStyleSingle;
+  text-strikethrough-color: @grey;
+  color: @grey;
+  }
+  > run[tag=data-done] {
+    color: @green;
+  }
+}
+
+item[data-today] {
+  > run[content] {
+    color: @red;
+  }
+  > run[tag=data-today] {
+    color: @red;
+  }
+}
+
+item[data-new] {
+  > run[tag=data-new] {
+    color: @green;
+  }
+}
+
+item[data-due] {
+  > run[content] {
+    color: @red;
+  }
+  > run[tag=data-due] {
+    color: @red;
+  }
+}
+
+item[data-canceled] {
+  > run[content] {
+      text-strikethrough: NSUnderlineStyleSingle;
+      text-strikethrough-color: @grey;
+      color: @grey;
+  }
+  > run[tag=data-canceled] {
+    color: @grey;
+  }
+}
+
+item[data-next] {
+  > run[tag=data-next] {
+    color: @orange;
+  }
+}
+
+item[mouseOver] {
+  handle-color: @background-color;
+  handle-border-color: @black;;  
+}
+item[mouseOverHandle] {
+  handle-color: @black;
+  handle-border-color: @background-color;  
+}
+
+item[collapsed] {
+  handle-color: @black;
+  handle-border-color: none;
+}
+
+run[link] {
+  cursor: pointer;
+  color: mix(@blue, @background-color, 60%);
+}
+
+run[link^="button"] {
+  color: @text-color;
+}
+
+run[link^="filter"] {
+  color: @text-color;
+}
+
+run[tag] {
+  font-size: @user-font-size - 5;
+  text-baseline-offset: 1;
+  font-style: normal;
+  font-weight: normal;
+  color: @blue;
+}
